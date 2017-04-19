@@ -1,0 +1,106 @@
+
+Clear
+
+New Circuit.ckt5  pu=1.00  r1=0  x1=0.001  r0=0  x0=0.001  
+
+New WireData.AL_1/0_7STR  Rac=0.604594  Runits=km  GMRac=0.33782  GMRUnits=cm  Radius=0.46736  Radunits=cm normamps=218 262
+New WireData.ACSR_1/0_6/1  Rac=0.695936  Runits=km  GMRac=0.13462  GMRUnits=cm  Radius=0.50546  Radunits=cm normamps=271 325
+
+New Linecode.defaultSecondary nphases=1 rmatrix=0.25  xmatrix=0.076 cmatrix=3 units=kft
+New LineGeometry.1PH-NONENONEAL_1/0_7STRACSR_1/0_6/1  nconds=2  nphases=1
+~ cond=1  wire=AL_1/0_7STR x=0 h=12.192 units=m
+~ cond=2  wire=ACSR_1/0_6/1 x=0 h=10.668 units=m
+~ reduce=y
+
+New Reactor.MDV_SUB_1_HSB  bus1=SourceBus  bus2=RTBus  r=0  x=(1.4255 1.0871 0.001 3 * - - 115 12.47 / sqr *)
+~ normamps=1000 emergamps=2000
+
+New Transformer.MDV_SUB_1  phases=3  windings=2  buses=(RTBus, MainBus.1.2.3.0)  conns=(delta wye)  kvs=(115, 12.47)  kvas=(10000, 10000)  xhl=(1.0871 0.001 3 * - 10000 1000 / * 12.47 sqr / 100 *)  sub=y  subname=MDV_SUB_1
+~ wdg=1  %r=(0.103 10000 1000 / * 12.47 sqr / 2 / 100 *)
+~ wdg=2  %r=(0.103 10000 1000 / * 12.47 sqr / 2 / 100 *)
+
+New Line.ST1        bus1= MainBus.3                       bus2=N1.3                        length=25.030784799 units=km geometry=1PH-NONENONEAL_1/0_7STRACSR_1/0_6/1                              units=km enabled=True  phases=1 
+New Transformer.T1  phases=1  wdg=1 bus=N1.3  kv=7.19955785679463  kVA=25  wdg=2 bus=X_N1.3  kv=0.24  kVA=25  %imag=0.5  %loadloss=1.5  %noloadloss=.25  XHL=2
+New Line.T1H1_1  bus1=X_N1.3  bus2= X_N1_1.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H1_1  phases=1  bus1= X_N1_1.3  kv=0.24  kW=3.8075975  pf=0.930029580925522  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.5
+New Line.T1H1_2  bus1= X_N1.3  bus2= X_N1_2.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H1_2  phases=1  bus1= X_N1_2.3  kv=0.24  kW=3.8075975  pf=0.930029580925522  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.5
+
+New Line.ST2        bus1= N1.3                        bus2=N2.3                        length=0.042671999 geometry=1PH-NONENONEAL_1/0_7STRACSR_1/0_6/1                              units=km enabled=True  phases=1 
+New Transformer.T2  phases=1  wdg=1 bus=N2.3  kv=7.19955785679463  kVA=25   wdg=2 bus=X_N2.3  kv=0.24  kVA=25  %imag=0.5  %loadloss=1.5  %noloadloss=.25  XHL=2
+New Line.T2H2_1  bus1=X_N2.3  bus2=X_N2_1.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H2_1  phases=1  bus1=X_N2_1.3  kv=0.24  kW=5.62455633333333  pf=0.930029590337032  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+New Line.T2H2_2  bus1=X_N2.3  bus2=X_N2_2.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H2_2  phases=1  bus1=X_N2_2.3  kv=0.24  kW=5.62455633333333  pf=0.930029590337032  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+New Line.T2H2_3  bus1=X_N2.3  bus2=X_N2_3.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H2_3  phases=1  bus1=X_N2_3.3  kv=0.24  kW=5.62455633333333  pf=0.930029590337032  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+
+New Line.ST3        bus1=N2.3                        bus2=N3.3                        length=0.052425598 geometry=1PH-NONENONEAL_1/0_7STRACSR_1/0_6/1                              units=km enabled=True  phases=1 
+New Transformer.T3  phases=1  wdg=1 bus=N3.3  kv=7.19955785679463  kVA=25   wdg=2 bus=X_N3.3  kv=0.24  kVA=25  %imag=0.5  %loadloss=1.5  %noloadloss=.25  XHL=2
+New Line.T3H3_1  bus1=X_N3.3  bus2=X_N3_1.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H3_1  phases=1  bus1=X_N3_1.3  kv=0.24  kW=4.59513366666667  pf=0.930029587167978  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+New Line.T3H3_2  bus1=X_N3.3  bus2=X_N3_2.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H3_2  phases=1  bus1=X_N3_2.3  kv=0.24  kW=4.59513366666667  pf=0.930029587167978  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+New Line.T3H3_3  bus1=X_N3.3  bus2=X_N3_3.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H3_3  phases=1  bus1=X_N3_3.3  kv=0.24  kW=4.59513366666667  pf=0.930029587167978  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+
+New Line.ST4        bus1=N3.3                        bus2=N4.3                        length=0.040233599 geometry=1PH-NONENONEAL_1/0_7STRACSR_1/0_6/1                              units=km enabled=True  phases=1 
+New Transformer.T4  phases=1  wdg=1 bus=N4.3  kv=7.19955785679463  kVA=25  wdg=2 bus=X_N4.3  kv=0.24  kVA=25  %imag=0.5  %loadloss=1.5  %noloadloss=.25  XHL=2
+New Line.T4H4_1  bus1=X_N4.3  bus2=X_N4_1.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H4_1  phases=1  bus1=X_N4_1.3  kv=0.24  kW=6.567842  pf=0.930029584365006  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.5
+New Line.T4H4_2  bus1=X_N4.3  bus2=X_N4_2.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H4_2  phases=1  bus1=X_N4_2.3  kv=0.24  kW=6.567842  pf=0.930029584365006  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.5
+
+New Line.ST5        bus1=N4.3                        bus2=N5.3                        length=0.049377598 geometry=1PH-NONENONEAL_1/0_7STRACSR_1/0_6/1                              units=km enabled=True  phases=1 
+New Transformer.T5  phases=1  wdg=1 bus=N5.3  kv=7.19955785679463  kVA=25   wdg=2 bus=X_N5.3  kv=0.24  kVA=25  %imag=0.5  %loadloss=1.5  %noloadloss=.25  XHL=2
+New Line.T5H5_1  bus1=X_N5.3  bus2=X_N5_1.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H5_1  phases=1  bus1=X_N5_1.3  kv=0.24  kW=6.27427366666667  pf=0.930029585662813  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+New Line.T5H5_2  bus1=X_N5.3  bus2=X_N5_2.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H5_2  phases=1  bus1=X_N5_2.3  kv=0.24  kW=6.27427366666667  pf=0.930029585662813  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+New Line.T5H5_3  bus1=X_N5.3  bus2=X_N5_3.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H5_3  phases=1  bus1=X_N5_3.3  kv=0.24  kW=6.27427366666667  pf=0.930029585662813  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+
+New Line.ST6        bus1=N5.3                        bus2=N6.3                        length=0.050901598 geometry=1PH-NONENONEAL_1/0_7STRACSR_1/0_6/1                              units=km enabled=True  phases=1 
+New Transformer.T6  phases=1  wdg=1 bus=N6.3  kv=7.19955785679463  kVA=25   wdg=2 bus=X_N6.3  kv=0.24  kVA=25  %imag=0.5  %loadloss=1.5  %noloadloss=.25  XHL=2
+New Line.T6H6_1  bus1=X_N6.3  bus2=X_N6_1.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H6_1  phases=1  bus1=X_N6_1.3  kv=0.24  kW=5.84692975  pf=0.930029589319789  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=9.25
+New Line.T6H6_2  bus1=X_N6.3  bus2=X_N6_2.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H6_2  phases=1  bus1=X_N6_2.3  kv=0.24  kW=5.84692975  pf=0.930029589319789  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=9.25
+New Line.T6H6_3  bus1=X_N6.3  bus2=X_N6_3.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H6_3  phases=1  bus1=X_N6_3.3  kv=0.24  kW=5.84692975  pf=0.930029589319789  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=9.25
+New Line.T6H6_4  bus1=X_N6.3  bus2=X_N6_4.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H6_4  phases=1  bus1=X_N6_4.3  kv=0.24  kW=5.84692975  pf=0.930029589319789  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=9.25
+
+New Line.ST7        bus1=N6.3                        bus2=N7.3                        length=0.046939198 geometry=1PH-NONENONEAL_1/0_7STRACSR_1/0_6/1                              units=km enabled=True  phases=1 
+New Transformer.T7  phases=1  wdg=1 bus=N7.3  kv=7.19955785679463  kVA=25   wdg=2 bus=X_N7.3  kv=0.24  kVA=25  %imag=0.5  %loadloss=1.5  %noloadloss=.25  XHL=2
+New Line.T7H7_1  bus1=X_N7.3  bus2=X_N7_1.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H7_1  phases=1  bus1=X_N7_1.3  kv=0.24  kW=3.86385  pf=0.93002958168504  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+New Line.T7H7_2  bus1=X_N7.3  bus2=X_N7_2.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H7_2  phases=1  bus1=X_N7_2.3  kv=0.24  kW=3.86385  pf=0.93002958168504  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+New Line.T7H7_3  bus1=X_N7.3  bus2=X_N7_3.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H7_3  phases=1  bus1=X_N7_3.3  kv=0.24  kW=3.86385  pf=0.93002958168504  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+
+New Line.ST8        bus1=N7.3                        bus2=N8.3                        length=0.053035198 geometry=1PH-NONENONEAL_1/0_7STRACSR_1/0_6/1                              units=km enabled=True  phases=1 
+New Transformer.T8  phases=1  wdg=1 bus=N8.3  kv=7.19955785679463  kVA=25   wdg=2 bus=X_N8.3  kv=0.24  kVA=25  %imag=0.5  %loadloss=1.5  %noloadloss=.25  XHL=2
+New Line.T8H8_1  bus1=X_N8.3  bus2=X_N8_1.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H8_1  phases=1  bus1=X_N8_1.3  kv=0.24  kW=5.00015233333333  pf=0.930029582205878  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+New Line.T8H8_2  bus1=X_N8.3  bus2=X_N8_2.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H8_2  phases=1  bus1=X_N8_2.3  kv=0.24  kW=5.00015233333333  pf=0.930029582205878  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+New Line.T8H8_3  bus1=X_N8.3  bus2=X_N8_3.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H8_3  phases=1  bus1=X_N8_3.3  kv=0.24  kW=5.00015233333333  pf=0.930029582205878  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.3333333333333
+
+New Line.ST9        bus1=N8.3                        bus2=N9.3                        length=0.056083198 geometry=1PH-NONENONEAL_1/0_7STRACSR_1/0_6/1                              units=km enabled=True  phases=1 
+New Transformer.T9  phases=1  wdg=1 bus=N9.3  kv=7.19955785679463  kVA=25  wdg=2 bus=X_N9.3  kv=0.24  kVA=25  %imag=0.5  %loadloss=1.5  %noloadloss=.25  XHL=2
+New Line.T9H9_1  bus1=X_N9.3  bus2=X_N9_1.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H9_1  phases=1  bus1=X_N9_1.3  kv=0.24  kW=7.6943  pf=0.930029578250181  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.5
+New Line.T9H9_2  bus1=X_N9.3  bus2=X_N9_2.3  linecode=defaultSecondary  phases=1  length=100  units=ft
+New Load.H9_2  phases=1  bus1=X_N9_2.3  kv=0.24  kW=7.6943  pf=0.930029578250181  status=variable model=4 CVRwatts=0.8 CVRvars=3 Class=1    conn=wye   !xfkVA=12.5
+
+Compile
+
+Set voltagebases=[345, 115, 13.8, 12.47, 4.16, 0.48, 0.415, 0.208]
+Calcvoltagebases
+
+Solve
+
+
